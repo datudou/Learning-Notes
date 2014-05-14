@@ -1,22 +1,22 @@
 ［转］http://blog.csdn.net/sadfishsc/article/details/7419573
-1.   适用范围
-对于什么情况下才会用到自定义的ContentProvider，官方文档的Dev Guide是这样描述的：
+适用范围
+-----------------------------
+        对于什么情况下才会用到自定义的ContentProvider，官方文档的Dev Guide是这样描述的：
+    如果你想要提供以下的一种或几种特性的时候你才需要构造一个ContentProvider：
+        * 你想要为其它的应用提供复杂的数据或者文件；
+        * 你想允许用户从你的应用中拷贝复杂的数据到其它的应用中；
+        * 你想要使用搜索框架来提供自定义的搜索策略；
+        * 你完全不需要ContentProvider来调用一个SQLite数据库，如果这种调用完全在你自己的应用之中。
+    也就是说，ContentProvider的作用是为别的应用调用本应用中的数据或者文件提供接口，而它也是唯
+    一的跨应用数据传递的接口(注：AIDL也能通过接口实现传递数据)。如果仅仅是同一个应用中的数据传
+    递，则完全没有必要使用到自定义的ContentProvider。另一方面，虽然ContentProvider也能组织
+    文件数据或者SharedPreferences(其实也是文件数据）这种数据，但大多数情况下ContentProvider
+    是作为SQLite数据库的调用接口来被继承的。其原因大概是在于重写的query()方法始终需要返回Cursor，
+    而Cursor作为数据库数据的容器，并没有提供直接往Cursor中写入数据的方法。
 
-如果你想要提供以下的一种或几种特性的时候你才需要构造一个ContentProvider：
-
-你想要为其它的应用提供复杂的数据或者文件；
-你想允许用户从你的应用中拷贝复杂的数据到其它的应用中；
-你想要使用搜索框架来提供自定义的搜索策略。
-你完全不需要ContentProvider来调用一个SQLite数据库，如果这种调用完全在你自己的应用之中。
-
- 
-
-也就是说，ContentProvider的作用是为别的应用调用本应用中的数据或者文件提供接口，而它也是唯一的跨应用数据传递的接口。如果仅仅是同一个应用中的数据传递，则完全没有必要使用到自定义的ContentProvider。
-
-另一方面，虽然ContentProvider也能组织文件数据或者SharedPreferences（其实也是文件数据）这种数据，但大多数情况下ContentProvider是作为SQLite数据库的调用接口来被继承的。其原因大概是在于重写的query()方法始终需要返回Cursor，而Cursor作为数据库数据的容器，并没有提供直接往Cursor中写入数据的方法。
-
-2.   大体实现步骤
-1.      创建一个数据源，例如继承SQLiteOpenHelper创建一个SQLite数据库；
+###实现步骤###
+-----------------------------
+    * 创建一个数据源，例如继承SQLiteOpenHelper创建一个SQLite数据库；
 
 2.      创建一个继承自ContentProvider的类，并重写insert、delete、query、update、getType、onCreate方法，在这些方法中实现对数据源的操作；
 
