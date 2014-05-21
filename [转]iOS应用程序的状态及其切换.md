@@ -12,7 +12,8 @@
     
 
  ##  iOS应用入口和AppDelegate ##
-我最初开始iOS应用开发学习的时候，也没有像样的培训和指导，第一个要看的就是代码。我们知道ObjectiveC也是基于C的，于是我们找到了入口代码main()函数。通常代码如下：
+ 
+ > 我最初开始iOS应用开发学习的时候，也没有像样的培训和指导，第一个要看的就是代码。我们知道ObjectiveC也是基于C的，于是我们找到了入口代码main()函数。通常代码如下：
 
     int main(int argc, char *argv[])
     {
@@ -21,7 +22,7 @@
        }
     }
 
-我们看到返回类型、函数名和参数都很熟悉。至于函数体，除了AutoRelease是自动释放池之外，执行的是一个名为UIApplicationMain的函数调用，后两个参数是nil（空）和一个MyAppDelegate类名字符串。这个函数调用也就是这个iOS应用的开始，它进行了这个应用的初始化过程，并生成了一个类名为MyAppDelegate的对象。至于MyAppDelegate这个名字，这里只是一个示例，可以为其它命名，通常是应用统一定义的前缀+”AppDelegate”。这些都不重要，重要的是它实际上需要遵从于UIApplicationDelegate这个Protocol的定义，给出一些方法的实现。那么这个“AppDelegate”又是什么呢？实际上，苹果已经为把每个应用包装成一个UIApplication对象，但应用每一步运行的细节并不需要开发者关注，只要关注这个应用对象对应的delegate即可，也就是这个“AppDelegate”。通过AppDelegate我们可以知道Application的运行状态，发生了哪些事件。 
+> 我们看到返回类型、函数名和参数都很熟悉。至于函数体，除了AutoRelease是自动释放池之外，执行的是一个名为UIApplicationMain的函数调用，后两个参数是nil（空）和一个MyAppDelegate类名字符串。这个函数调用也就是这个iOS应用的开始，它进行了这个应用的初始化过程，并生成了一个类名为MyAppDelegate的对象。至于MyAppDelegate这个名字，这里只是一个示例，可以为其它命名，通常是应用统一定义的前缀+”AppDelegate”。这些都不重要，重要的是它实际上需要遵从于UIApplicationDelegate这个Protocol的定义，给出一些方法的实现。那么这个“AppDelegate”又是什么呢？实际上，苹果已经为把每个应用包装成一个UIApplication对象，但应用每一步运行的细节并不需要开发者关注，只要关注这个应用对象对应的delegate即可，也就是这个“AppDelegate”。通过AppDelegate我们可以知道Application的运行状态，发生了哪些事件。 
 
  - 程序的5个状态和对应的AppDelegate的7个方法
  至于五个状态，分别是：
