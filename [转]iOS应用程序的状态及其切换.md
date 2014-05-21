@@ -5,11 +5,7 @@
 
 ---
 【原文】http://www.molotang.com/articles/1254.html
-    
-    做iOS开发有小一年了，做应用开发有好几年了。大大小小的应用也开发了很多种，但无论是运行在哪个平台上的用什么语言开发出来的应用程序，对于执行内容比较长的、场景比较复杂的情况，通过状态和生![此处输入图片的描述][1]命周期来组织代码是非常好的一种方式。本文对iOS应用涉及到的生命周期，或者叫应用程序状态做一个简要的小结。
-    刚刚提到生命周期在应用程序开发中的应用很广泛，我了解到的例子就有很多。比如Java中的Tomcat实现，无论是Server、Service还是Connector或者Context，都是Lifecycle的子类实现；再如JDK1.5之后的ThreadPoolExecutor也是有状态概念的；往近了说，除了iOS应用外，与其呼应的Android应用中，Activity也是有生命周期概念的。
-    说得有点远了，书归正传，说说iOS应用程序中的状态，就从应用启动说起。
-    
+
 
  ##  iOS应用入口和AppDelegate ##
  
@@ -33,11 +29,11 @@
      - 活动 Background,
      - 后台 Suspend,挂起
 
-对这5种状态，这里先不过多解释，看下图也许就会明白许多。
+> 对这5种状态，这里先不过多解释，看下图也许就会明白许多。
 
 
-  从这个示意图，我们可以看到哪些状态间是可以互相转化的。而在这些状态互相转化的同时，AppDelegate中对应的生命周期方法会被调用：
-  从这个示意图，我们可以看到哪些状态间是可以互相转化的。而在这些状态互相转化的同时，AppDelegate中对应的生命周期方法会被调用：
+
+>  从这个示意图，我们可以看到哪些状态间是可以互相转化的。而在这些状态互相转化的同时，AppDelegate中对应的生命周期方法会被调用：
 
     - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions      进程启动但还没完成初始化
     - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions     进程启动基本完成
@@ -47,6 +43,7 @@
     - (void)applicationWillEnterForeground:(UIApplication *)application   程序从后台将要回到前台
     - (void)applicationWillTerminate:(UIApplication *)application   程序将要退出
 ## 应用一般启动过程 ##
+
 介绍了iOS应用的基本状态和生命周期方法之后，再简要对应用启动和前台状态做一个整理说明。
 
 对于一般的iOS应用来说，启动之后是进入前台运行的，大概的流程如下图：
@@ -60,6 +57,7 @@
 
 应用程序也有启动后直接进入后台运作的，这个可以参看苹果官方文档说明。
 ##  前台运行的Active与Inactive ##
+
 在介绍iOS应用状态5种最基本的状态时，我们发现前台运行有两种状态，分别是Inactive和Active状态。大多数情况下，Inactive状态只是其它状态之间切换时短暂的停留状态，如前后台应用切换时，Inactive状态会在Active和Background之间短暂出现。
 
 但也有一些其它情况，Active和Inactive可以在前台运行时互相切换，比如当一个应用安装运行后第一次尝试使用GPS定位，需要获取用户的允许，给出系统的Alert提示，这时应用会从Active切换到Inactive，直到用户确认后再返回Active。再如，用户在应用运行时从状态条向下拉出通知页，也会发生Active和Inactive状态的切换。
