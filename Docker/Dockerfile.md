@@ -6,4 +6,4 @@
 1. `ADD`指令可以从一个URL地址下载内容复制到容器的文件系统中;
 2. `ADD`指令会将压缩打包格式的文件解开后复制到指定位置，而`COPY`指令只做复制操作。
 
-[引用自https://github.com/zhangpeihao/LearningDocker/edit/master/manuscript/04-WriteDockerfile.md](https://github.com/zhangpeihao/LearningDocker/edit/master/manuscript/04-WriteDockerfile.md)
+[引用自:https://github.com/zhangpeihao/LearningDocker/edit/master/manuscript/04-WriteDockerfile.md](https://github.com/zhangpeihao/LearningDocker/edit/master/manuscript/04-WriteDockerfile.md)
