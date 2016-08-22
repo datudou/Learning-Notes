@@ -16,6 +16,7 @@
 
 ## Docker
  * K8s
+ * Dockerfile
  
 ## 弱电布线
 
