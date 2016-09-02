@@ -6,7 +6,7 @@
 
 ## Web开发
  * CSS
- * [React](https://github.com/datudou/Article/wiki/React)
+ * [React](https://github.com/datudou/Learning-Notes/blob/master/Web-Develope/React.md)
  * [HTML5](https://github.com/datudou/Article/wiki/HTML5)
  * Ruby on Rails
  
